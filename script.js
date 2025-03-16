@@ -25,3 +25,21 @@ async function generateResponse(prompt) {
             ]
         })
     });
+    
+    if(!response.ok){
+        throw new Error('Failed to generate response');
+
+    }
+
+    const data = await response.json();
+    return data.candidates[0].content.parts[0].text;
+
+}
+function cleanMarkdown(text){
+    return text
+        .replace(/#{1,6}\s?/g, '')
+        .replace(/\*\*/g, '')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
+
+}
