@@ -99,3 +99,25 @@ body{
     cursor: not-allowed;
 }
 
+@media(max-width:480px){
+    .chat-container{
+        height: 100vh;
+        border-radius: 0;
+    }
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+}
+
+::-webkit-scrollbar-track{
+    background: black;
+}
+::-webkit-scrollbar-thumb{
+    background: #4a4a4a;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background: #5a5a5a;
+}
