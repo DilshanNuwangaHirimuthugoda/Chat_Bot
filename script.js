@@ -43,3 +43,28 @@ function cleanMarkdown(text){
         .trim();
 
 }
+
+function addMessage(message, isUser ) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+
+    messageElement.classList.add(isUser ? 'user-message' : 'bot-message');
+
+    const profileImage = document.createElement('img');
+    profileImage.classList.add('profile-image');
+
+    profileImage.src = isUser ? 'user.png' : 'bot.png';
+    profileImage.alt = isUser ? 'User' : 'Bot';
+
+    const messageContent = document.createElement('div');
+    messageContent.classList.add('message-content');
+
+    messageContent.innerText = message;
+
+    messageElement.appendChild(profileImage);
+    messageElement.appendChild(messageContent);
+
+    chatMessages.appendChild(messageElement);
+
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
