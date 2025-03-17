@@ -68,3 +68,31 @@ function addMessage(message, isUser ) {
 
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
+
+async function handleUserInput() {
+    const userMessage = userInput.value.trim();
+    if(userMessage){
+        addMessage(userMessage, true);
+        
+        userInput.value = '';
+        sendButton.disabled = true;
+        userInput.disabled = true;
+
+        try{
+            const botMessage = await generateResponse(userMessage);
+            addMessage(cleanMarkdown(botMessage), false);
+        
+        }catch(error){
+            console.error('Error:',error);
+
+            addMessage('Sorry, I could not generate a response please try agin Later', false);
+        }finally{
+            sendButton.disabled = false;
+            userInput.disabled = false;
+            userInput.focus();
+        }
+    }
+}
+
+
+        
