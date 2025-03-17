@@ -95,4 +95,12 @@ async function handleUserInput() {
 }
 
 
+sendButton.addEventListener('click', handleUserInput);
+userInput.addEventListener('keypress', (e) => {
+    if(e.key === 'Enter' && !e.shiftKey){
+        e.preventDefault();
+        handleUserInput();
+    }
+}
+);
         
